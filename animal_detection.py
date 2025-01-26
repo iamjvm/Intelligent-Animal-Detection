@@ -29,11 +29,16 @@ def detect_animal(frame):
     image = Image.fromarray(frame)
     image = preprocess_image(image)
 
+    print("Processed image shape:", image.shape)  # Log the shape of the processed image
+
     # Make predictions using the model
     predictions = model.predict(image)
     predicted_label_index = np.argmax(predictions)
     predicted_label = class_labels[predicted_label_index]
     predicted_label_accuracy = predictions[0][predicted_label_index]
+
+    # Log the predicted label and accuracy
+    print(f"Predicted label: {predicted_label}, Accuracy: {predicted_label_accuracy * 100:.2f}%")
 
     # Update animal frequencies if the predicted label's accuracy is above the threshold
     if predicted_label_accuracy > accuracy_threshold:
@@ -74,3 +79,4 @@ def perform_animal_detection():
 
 # Run the animal detection program
 perform_animal_detection()
+

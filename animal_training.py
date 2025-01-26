@@ -41,4 +41,4 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 history = model.fit(image_iterator, epochs=60)
 
 # Save the model
-model.save("animal_detection_model.h5")
+model.save("animal_detection_model.keras")
